@@ -55,7 +55,13 @@ public class MainActivity extends AppCompatActivity {
         TodoDAO todoDAO = new TodoDAO(context);
         List<Todo> todos = todoDAO.list();
 
-        TodoAdapter todoAdapter = new TodoAdapter(todos);
+        TodoAdapter todoAdapter = new TodoAdapter(todos, new TodoAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Todo todo) {
+                Intent intent = new Intent(context, DetailActivity.class);
+                startActivity(intent);
+            }
+        });
 
 /*        String text = "";
 
@@ -78,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
         todoAdapter = new TodoAdapter(todos);
+        recyclerView.setAdapter(todoAdapter);
 
 
         context = getApplicationContext();
