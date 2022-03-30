@@ -68,6 +68,9 @@ public class AddTodoActivity extends AppCompatActivity {
 
                     todo = new Todo(name, urgency);
 
+                    TodoDAO todoDAO = new TodoDAO(context);
+                    todoDAO.add(todo);
+
                     Intent resultIntent = new Intent();
                     resultIntent.putExtra("todo", todo);
                     setResult(RESULT_OK, resultIntent);

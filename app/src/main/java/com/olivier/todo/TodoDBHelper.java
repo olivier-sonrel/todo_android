@@ -8,7 +8,7 @@ public class TodoDBHelper extends SQLiteOpenHelper {
     private static final int VERSION = 1;
     private static final String DATABASE_NAME = "todo.db";
 
-    private static final String TODO_KEY = "id";
+    public static final String TODO_KEY = "id";
     public static final String TODO_NAME = "name";
     public static final String TODO_URGENCY = "urgency";
 

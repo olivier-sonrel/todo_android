@@ -63,4 +63,27 @@ public class TodoDAO extends DAO{
 
         db.insert(TodoDBHelper.TODO_TABLE_NAME, null, value);
     }
+
+    public void update(Todo todo) {
+        open();
+
+        ContentValues values = new ContentValues();
+
+        values.put(TodoDBHelper.TODO_NAME, todo.getName());
+        values.put(TodoDBHelper.TODO_URGENCY, todo.getUrgency());
+
+        db.update(TodoDBHelper.TODO_TABLE_NAME, values, TodoDBHelper.TODO_KEY + " = ?",
+                new String[] { String.valueOf(todo.getId())});
+
+        close();
+    }
+
+    public void delete(Todo todo) {
+        open();
+
+        db.delete(TodoDBHelper.TODO_TABLE_NAME, TodoDBHelper.TODO_KEY + " = ?",
+                new String[] { String.valueOf(todo.getId())});
+
+        close();
+    }
 }

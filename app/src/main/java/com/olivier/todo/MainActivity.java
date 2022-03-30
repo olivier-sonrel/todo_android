@@ -10,6 +10,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     TextView tvTodos;
@@ -34,6 +36,22 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        TodoDAO todoDAO = new TodoDAO(context);
+        List<Todo> todos = todoDAO.list();
+
+        String text = "";
+
+        for( Todo todo : todos){
+            text += String.format(" %s / %s \n", todo.getName(), todo.getUrgency());
+        }
+
+        tvTodos.setText(text);
     }
 
     @Override
