@@ -9,8 +9,8 @@ public class TodoDBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "todo.db";
 
     private static final String TODO_KEY = "id";
-    private static final String TODO_NAME = "name";
-    private static final String TODO_URGENCY = "urgency";
+    public static final String TODO_NAME = "name";
+    public static final String TODO_URGENCY = "urgency";
 
     public static final String TODO_TABLE_NAME = "Todo";
 
@@ -19,7 +19,7 @@ public class TodoDBHelper extends SQLiteOpenHelper {
     public static final int TODO_URGENCY_COLUMN_INDEX = 2;
 
     private static final String TODO_TABLE_CREATE =
-            "CREATE_TABLE " + TODO_TABLE_NAME + " (" +
+            "CREATE TABLE " + TODO_TABLE_NAME + " (" +
                     TODO_KEY + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     TODO_NAME + " TEXT, " +
                     TODO_URGENCY + "TEXT) ;";
