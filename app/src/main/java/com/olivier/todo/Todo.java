@@ -1,6 +1,8 @@
 package com.olivier.todo;
 
-public class Todo {
+import java.io.Serializable;
+
+public class Todo implements Serializable {
     private int id;
     private String name;
     private String urgency;
