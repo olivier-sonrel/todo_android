@@ -19,7 +19,7 @@ public class TodoDAO extends DAO{
                 );
         if(cursor != null && cursor.moveToFirst()){
             todo = new Todo();
-            todo.setId(cursor.getLong(TodoDBHelper.TODO_KEY_COLUMN_INDEX)));
+            todo.setId(cursor.getLong(TodoDBHelper.TODO_KEY_COLUMN_INDEX));
             todo.setName(cursor.getString(TodoDBHelper.TODO_NAME_COLUMN_INDEX));
             todo.setUrgency(cursor.getString(TodoDBHelper.TODO_URGENCY_COLUMN_INDEX));
 
