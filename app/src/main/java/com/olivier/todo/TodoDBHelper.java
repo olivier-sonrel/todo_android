@@ -12,23 +12,32 @@ public class TodoDBHelper extends SQLiteOpenHelper {
     private static final String TODO_NAME = "name";
     private static final String TODO_URGENCY = "urgency";
 
-    private static final String TODO_TABLE_NAME = "Todo";
+    public static final String TODO_TABLE_NAME = "Todo";
 
     public static final int TODO_KEY_COLUMN_INDEX = 0;
     public static final int TODO_NAME_COLUMN_INDEX = 1;
     public static final int TODO_URGENCY_COLUMN_INDEX = 2;
+
+    private static final String TODO_TABLE_CREATE =
+            "CREATE_TABLE " + TODO_TABLE_NAME + " (" +
+                    TODO_KEY + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    TODO_NAME + " TEXT, " +
+                    TODO_URGENCY + "TEXT) ;";
+
+    private static final String TODO_TABLE_DROP = " DROP TABLE IF EXISTS " + TODO_TABLE_NAME + ";";
 
     public TodoDBHelper(Context context) {
         super(context, DATABASE_NAME, null, VERSION);
     }
 
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {
-
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL(TODO_TABLE_CREATE);
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
-
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL(TODO_TABLE_DROP);
+        onCreate(db);
     }
 }
