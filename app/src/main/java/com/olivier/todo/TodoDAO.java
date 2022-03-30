@@ -3,6 +3,9 @@ package com.olivier.todo;
 import android.content.Context;
 import android.database.Cursor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TodoDAO extends DAO{
     public TodoDAO(Context context){ super(new TodoDBHelper(context));}
 
@@ -15,12 +18,18 @@ public class TodoDAO extends DAO{
                 );
         if(cursor != null && cursor.moveToFirst()){
             todo = new Todo();
-            todo.setId(Integer.parseInt(cursor.getString(0)));
+            todo.setId((long) Integer.parseInt(cursor.getString(0)));
             todo.setName(cursor.getString(1));
             todo.setUrgency(cursor.getString(2));
 
             cursor.close();
         }
         return todo;
+    }
+
+    public List<Todo> list(){
+        open();
+
+        List<Todo> todos = new ArrayList<>();
     }
 }
