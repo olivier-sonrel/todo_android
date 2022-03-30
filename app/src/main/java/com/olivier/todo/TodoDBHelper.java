@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class TodoDBHelper extends SQLiteOpenHelper {
-    private static final int VERSION = 1;
+    private static final int VERSION = 2;
     private static final String DATABASE_NAME = "todo.db";
 
     public static final String TODO_KEY = "id";
@@ -22,7 +22,7 @@ public class TodoDBHelper extends SQLiteOpenHelper {
             "CREATE TABLE " + TODO_TABLE_NAME + " (" +
                     TODO_KEY + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     TODO_NAME + " TEXT, " +
-                    TODO_URGENCY + "TEXT) ;";
+                    TODO_URGENCY + " TEXT) ;";
 
     private static final String TODO_TABLE_DROP = " DROP TABLE IF EXISTS " + TODO_TABLE_NAME + ";";
 
